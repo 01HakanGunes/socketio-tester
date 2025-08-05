@@ -3,13 +3,123 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Socket.io Client</title>
+        <title>Security Gate System - Socket.IO Tester</title>
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <form id="form">
-            <input id="input" autocomplete="off" /><button>Send</button>
-        </form>
+        <div class="container">
+            <header>
+                <h1>Security Gate System Tester</h1>
+                <div class="connection-status">
+                    <span id="connection-status">Disconnected</span>
+                    <div id="system-status"></div>
+                </div>
+            </header>
+
+            <div class="main-content">
+                <!-- Session Management -->
+                <section class="panel">
+                    <h2>Session Management</h2>
+                    <div class="session-info">
+                        <span>Current Session ID: </span>
+                        <span id="current-session-id">None</span>
+                    </div>
+                    <div class="controls">
+                        <button id="start-session-btn">Start Session</button>
+                        <button id="end-session-btn" disabled>
+                            End Session
+                        </button>
+                        <button id="get-profile-btn" disabled>
+                            Get Profile
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Chat Interface -->
+                <section class="panel">
+                    <h2>Chat Interface</h2>
+                    <div id="chat-messages" class="chat-messages"></div>
+                    <form id="chat-form" class="chat-form">
+                        <input
+                            id="chat-input"
+                            type="text"
+                            placeholder="Enter message..."
+                            autocomplete="off"
+                            disabled
+                        />
+                        <button type="submit" disabled>Send Message</button>
+                    </form>
+                </section>
+
+                <!-- Image Upload -->
+                <section class="panel">
+                    <h2>Image Upload</h2>
+                    <div class="image-upload">
+                        <input
+                            type="file"
+                            id="image-input"
+                            accept="image/*"
+                            disabled
+                        />
+                        <button id="upload-btn" disabled>Upload Image</button>
+                        <div id="upload-status"></div>
+                    </div>
+                </section>
+
+                <!-- Session Subscription -->
+                <section class="panel">
+                    <h2>Session Subscription</h2>
+                    <div class="controls">
+                        <button id="join-updates-btn" disabled>
+                            Join Session Updates
+                        </button>
+                        <button id="leave-updates-btn" disabled>
+                            Leave Session Updates
+                        </button>
+                    </div>
+                </section>
+
+                <!-- System Operations -->
+                <section class="panel">
+                    <h2>System Operations</h2>
+                    <div class="controls">
+                        <button id="health-check-btn">Health Check</button>
+                        <button id="threat-logs-btn">Get Threat Logs</button>
+                    </div>
+                </section>
+
+                <!-- Profile Display -->
+                <section class="panel">
+                    <h2>Visitor Profile</h2>
+                    <div id="profile-display" class="profile-display">
+                        <p>No profile data available</p>
+                    </div>
+                </section>
+
+                <!-- Logs and Events -->
+                <section class="panel full-width">
+                    <h2>Event Logs</h2>
+                    <div class="log-controls">
+                        <button id="clear-logs-btn">Clear Logs</button>
+                        <label>
+                            <input type="checkbox" id="auto-scroll" checked />
+                            Auto-scroll
+                        </label>
+                    </div>
+                    <div id="event-logs" class="event-logs"></div>
+                </section>
+
+                <!-- Threat Logs -->
+                <section class="panel full-width">
+                    <h2>Threat Logs</h2>
+                    <div id="threat-logs" class="threat-logs">
+                        <p>No threat logs available</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <script src="socket.io.min.js"></script>
+        <script src="index.js"></script>
     </body>
-    <script src="socket.io.min.js"></script>
-    <script src="index.js"></script>
 </html>
