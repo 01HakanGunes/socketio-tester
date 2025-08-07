@@ -6,14 +6,14 @@ export const EVENTS = {
   ERROR: "error",
 
   // Outgoing Events (Client -> Server)
-  SEND_MESSAGE: "send_message",
-  UPLOAD_IMAGE: "upload_image",
-  REQUEST_HEALTH_CHECK: "request_health_check",
-  REQUEST_THREAT_LOGS: "request_threat_logs",
+  SEND_MESSAGE: "chat_message",
+  UPLOAD_IMAGE: "image",
+  REQUEST_HEALTH_CHECK: "health",
+  REQUEST_THREAT_LOGS: "logs",
 
   // Incoming Events (Server -> Client)
   CHAT_RESPONSE: "chat_response",
-  IMAGE_UPLOAD_RESPONSE: "image_upload_response",
-  HEALTH_STATUS: "health_status",
-  THREAT_LOGS: "threat_logs",
+  IMAGE_UPLOAD_RESPONSE: "image_response",
+  HEALTH_STATUS: "health_response",
+  THREAT_LOGS: "logs_response",
 };

@@ -9,7 +9,7 @@ export class SocketManager {
     this.handlers = new Handlers(ui);
   }
 
-  connect(url = "http://localhost:8001") {
+  connect(url = "http://localhost:3000") {
     this.socket = io(url);
     this.socket.on("connect", () => {
       this.isConnected = true;
