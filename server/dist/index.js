@@ -31,6 +31,11 @@ class SecurityGateTester {
     );
     this.ui.logsBtn.addEventListener("click", () => this.socket.requestLogs());
 
+    // Camera controls
+    this.ui.initCameraBtn.addEventListener("click", () =>
+      this.socket.initializeCamera(),
+    );
+
     // Logs
     this.ui.clearLogsBtn.addEventListener("click", () => this.ui.clearLogs());
   }

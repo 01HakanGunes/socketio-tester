@@ -41,6 +41,22 @@
                     </div>
                 </section>
 
+                <!-- Camera System -->
+                <section class="panel">
+                    <h2>Camera System</h2>
+                    <div class="camera-controls">
+                        <button id="init-camera-btn">Initialize Camera</button>
+                        <div id="camera-status">Camera not initialized</div>
+                    </div>
+                    <video
+                        id="camera-video"
+                        style="display: none"
+                        autoplay
+                        muted
+                    ></video>
+                    <canvas id="camera-canvas" style="display: none"></canvas>
+                </section>
+
                 <!-- System Operations -->
                 <section class="panel">
                     <h2>System Operations</h2>

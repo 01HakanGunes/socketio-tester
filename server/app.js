@@ -74,6 +74,14 @@ io.on("connection", (socket) => {
     });
   });
 
+  // Handle frame responses from client
+  socket.on("frame_response", (data) => {
+    console.log("Received frame response:", {
+      timestamp: data.timestamp,
+      imageSize: data.image ? data.image.length : 0,
+    });
+  });
+
   socket.on("disconnect", () => {
     console.log("Client disconnected:", socket.id);
   });

@@ -357,6 +357,45 @@ button:active:not(:disabled) {
     animation: pulse 2s infinite;
 }
 
+/* Camera System */
+.camera-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.camera-controls button {
+    align-self: flex-start;
+}
+
+#camera-status {
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    color: #6c757d;
+}
+
+#camera-status.success {
+    background: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+#camera-status.error {
+    background: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+#camera-video {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
 /* Scrollbar styling */
 .event-logs::-webkit-scrollbar,
 .chat-messages::-webkit-scrollbar,

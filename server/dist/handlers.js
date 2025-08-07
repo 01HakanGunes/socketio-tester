@@ -1,8 +1,9 @@
 import { EVENTS } from "./events.js";
 
 export class Handlers {
-  constructor(ui) {
+  constructor(ui, socketManager) {
     this.ui = ui;
+    this.socketManager = socketManager;
   }
 
   register(socket) {
@@ -55,6 +56,20 @@ export class Handlers {
       this.ui.updateUploadStatus(data.message, data.status);
       if (data.status === "success") {
         this.ui.clearImageInput();
+      }
+    });
+
+    // Camera events
+    socket.on(EVENTS.FRAME_REQUEST, async (_data) => {
+      this.ui.log("Camera", "Frame request received", "");
+      if (this.socketManager) {
+        await this.socketManager.sendFrameResponse();
+      } else {
+        this.ui.log(
+          "Camera",
+          "Socket manager not available for frame capture",
+          "error",
+        );
       }
     });
   }

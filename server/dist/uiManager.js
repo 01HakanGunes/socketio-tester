@@ -19,6 +19,12 @@ export class UIManager {
     this.uploadBtn = document.getElementById("upload-btn");
     this.uploadStatus = document.getElementById("upload-status");
 
+    // Camera elements
+    this.initCameraBtn = document.getElementById("init-camera-btn");
+    this.cameraStatus = document.getElementById("camera-status");
+    this.cameraVideo = document.getElementById("camera-video");
+    this.cameraCanvas = document.getElementById("camera-canvas");
+
     // System operations
     this.healthCheckBtn = document.getElementById("health-check-btn");
     this.logsBtn = document.getElementById("logs-btn");
@@ -120,5 +126,19 @@ export class UIManager {
 
   getSelectedFile() {
     return this.imageInput.files[0];
+  }
+
+  // Camera methods
+  updateCameraStatus(message, type = "") {
+    this.cameraStatus.textContent = message;
+    this.cameraStatus.className = `camera-status ${type}`;
+  }
+
+  getCameraVideo() {
+    return this.cameraVideo;
+  }
+
+  getCameraCanvas() {
+    return this.cameraCanvas;
   }
 }
