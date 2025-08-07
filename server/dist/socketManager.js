@@ -53,8 +53,8 @@ export class SocketManager {
     this.ui.log("Action", "Requesting health check...");
   }
 
-  requestThreatLogs() {
-    this.socket.emit(EVENTS.REQUEST_THREAT_LOGS, {});
-    this.ui.log("Action", "Requesting threat logs...");
+  requestLogs() {
+    this.socket.emit(EVENTS.REQUEST_LOGS, {});
+    this.ui.log("Action", "Requesting logs...");
   }
 }

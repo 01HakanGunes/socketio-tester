@@ -9,11 +9,11 @@ export const EVENTS = {
   SEND_MESSAGE: "chat_message",
   UPLOAD_IMAGE: "image",
   REQUEST_HEALTH_CHECK: "health",
-  REQUEST_THREAT_LOGS: "logs",
+  REQUEST_LOGS: "logs",
 
   // Incoming Events (Server -> Client)
   CHAT_RESPONSE: "chat_response",
   IMAGE_UPLOAD_RESPONSE: "image_response",
   HEALTH_STATUS: "health_response",
-  THREAT_LOGS: "logs_response",
+  LOGS: "logs_response",
 };

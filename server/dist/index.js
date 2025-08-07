@@ -29,9 +29,7 @@ class SecurityGateTester {
     this.ui.healthCheckBtn.addEventListener("click", () =>
       this.socket.requestHealthCheck(),
     );
-    this.ui.threatLogsBtn.addEventListener("click", () =>
-      this.socket.requestThreatLogs(),
-    );
+    this.ui.logsBtn.addEventListener("click", () => this.socket.requestLogs());
 
     // Logs
     this.ui.clearLogsBtn.addEventListener("click", () => this.ui.clearLogs());

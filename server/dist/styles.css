@@ -298,8 +298,8 @@ button:active:not(:disabled) {
     white-space: pre-wrap;
 }
 
-/* Threat Logs */
-.threat-logs {
+/* Logs */
+.logs {
     background: #f8f9fa;
     border: 1px solid #e9ecef;
     border-radius: 5px;
@@ -361,14 +361,14 @@ button:active:not(:disabled) {
 .event-logs::-webkit-scrollbar,
 .chat-messages::-webkit-scrollbar,
 .profile-display::-webkit-scrollbar,
-.threat-logs::-webkit-scrollbar {
+.logs::-webkit-scrollbar {
     width: 6px;
 }
 
 .event-logs::-webkit-scrollbar-track,
 .chat-messages::-webkit-scrollbar-track,
 .profile-display::-webkit-scrollbar-track,
-.threat-logs::-webkit-scrollbar-track {
+.logs::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 3px;
 }
@@ -376,7 +376,7 @@ button:active:not(:disabled) {
 .event-logs::-webkit-scrollbar-thumb,
 .chat-messages::-webkit-scrollbar-thumb,
 .profile-display::-webkit-scrollbar-thumb,
-.threat-logs::-webkit-scrollbar-thumb {
+.logs::-webkit-scrollbar-thumb {
     background: #c1c1c1;
     border-radius: 3px;
 }
@@ -384,6 +384,6 @@ button:active:not(:disabled) {
 .event-logs::-webkit-scrollbar-thumb:hover,
 .chat-messages::-webkit-scrollbar-thumb:hover,
 .profile-display::-webkit-scrollbar-thumb:hover,
-.threat-logs::-webkit-scrollbar-thumb:hover {
+.logs::-webkit-scrollbar-thumb:hover {
     background: #a1a1a1;
 }

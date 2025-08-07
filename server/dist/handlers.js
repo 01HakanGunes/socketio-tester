@@ -21,13 +21,13 @@ export class Handlers {
       this.ui.log("Health Check", JSON.stringify(data, null, 2), "success");
     });
 
-    socket.on(EVENTS.THREAT_LOGS, (data) => {
+    socket.on(EVENTS.LOGS, (data) => {
       this.ui.log(
-        "Threat Logs",
+        "Logs",
         `Received ${Array.isArray(data) ? data.length : 0} log entries`,
         "success",
       );
-      this.ui.displayThreatLogs(data);
+      this.ui.displayLogs(data);
     });
 
     socket.on(EVENTS.ERROR, (data) => {

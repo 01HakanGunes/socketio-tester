@@ -21,13 +21,13 @@ export class UIManager {
 
     // System operations
     this.healthCheckBtn = document.getElementById("health-check-btn");
-    this.threatLogsBtn = document.getElementById("threat-logs-btn");
+    this.logsBtn = document.getElementById("logs-btn");
 
     // Logs
     this.eventLogs = document.getElementById("event-logs");
     this.clearLogsBtn = document.getElementById("clear-logs-btn");
     this.autoScrollCheckbox = document.getElementById("auto-scroll");
-    this.threatLogs = document.getElementById("threat-logs");
+    this.logs = document.getElementById("logs");
   }
 
   setupEventListeners() {
@@ -81,11 +81,11 @@ export class UIManager {
     this.imageInput.value = "";
   }
 
-  displayThreatLogs(logs) {
-    this.threatLogs.textContent =
+  displayLogs(logs) {
+    this.logs.textContent =
       Array.isArray(logs) && logs.length > 0
         ? JSON.stringify(logs, null, 2)
-        : "No threat logs available";
+        : "No logs available";
   }
 
   log(event, data, type = "") {

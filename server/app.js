@@ -34,7 +34,7 @@ app.post("/api/sendMessage", (req, res) => {
   responseString = message;
 
   // Emit to all connected clients
-  io.emit("chat_response", message);
+  io.emit("chat_response", { agent_response: message });
 
   res.json({
     success: true,
