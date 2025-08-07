@@ -20,11 +20,6 @@ class SecurityGateTester {
       this.ui.clearChatInput();
     });
 
-    // Image upload
-    this.ui.uploadBtn.addEventListener("click", () => {
-      this.socket.uploadImage(this.ui.getSelectedFile());
-    });
-
     // System operations
     this.ui.healthCheckBtn.addEventListener("click", () =>
       this.socket.requestHealthCheck(),

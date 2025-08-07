@@ -30,26 +30,6 @@ export class SocketManager {
     this.ui.log("Chat", `Sent message: ${message}`);
   }
 
-  // Image methods
-  uploadImage(file) {
-    if (!file) {
-      this.ui.log("Error", "No image file selected", "error");
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const base64Data = e.target.result.split(",")[1];
-      this.socket.emit(EVENTS.UPLOAD_IMAGE, {
-        image: base64Data,
-        timestamp: new Date().toISOString(),
-      });
-      this.ui.updateUploadStatus("Uploading image...", "");
-      this.ui.log("Action", `Uploading image: ${file.name}`);
-    };
-    reader.readAsDataURL(file);
-  }
-
   // System methods
   requestHealthCheck() {
     this.socket.emit(EVENTS.REQUEST_HEALTH_CHECK, {});

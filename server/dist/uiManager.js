@@ -14,11 +14,6 @@ export class UIManager {
     this.chatForm = document.getElementById("chat-form");
     this.chatInput = document.getElementById("chat-input");
 
-    // Image upload
-    this.imageInput = document.getElementById("image-input");
-    this.uploadBtn = document.getElementById("upload-btn");
-    this.uploadStatus = document.getElementById("upload-status");
-
     // Camera elements
     this.initCameraBtn = document.getElementById("init-camera-btn");
     this.cameraStatus = document.getElementById("camera-status");
@@ -73,20 +68,6 @@ export class UIManager {
     this.chatMessages.innerHTML = "";
   }
 
-  updateUploadStatus(message, status) {
-    this.uploadStatus.textContent = message;
-    this.uploadStatus.className = status || "";
-  }
-
-  clearUploadStatus() {
-    this.uploadStatus.textContent = "";
-    this.uploadStatus.className = "";
-  }
-
-  clearImageInput() {
-    this.imageInput.value = "";
-  }
-
   displayLogs(logs) {
     this.logs.textContent =
       Array.isArray(logs) && logs.length > 0
@@ -122,10 +103,6 @@ export class UIManager {
 
   clearChatInput() {
     this.chatInput.value = "";
-  }
-
-  getSelectedFile() {
-    return this.imageInput.files[0];
   }
 
   // Camera methods

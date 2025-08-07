@@ -46,19 +46,6 @@ export class Handlers {
       }
     });
 
-    // Image events
-    socket.on(EVENTS.IMAGE_UPLOAD_RESPONSE, (data) => {
-      this.ui.log(
-        "Image Upload",
-        JSON.stringify(data, null, 2),
-        data.status === "success" ? "success" : "error",
-      );
-      this.ui.updateUploadStatus(data.message, data.status);
-      if (data.status === "success") {
-        this.ui.clearImageInput();
-      }
-    });
-
     // Camera events
     socket.on(EVENTS.FRAME_REQUEST, async (_data) => {
       this.ui.log("Camera", "Frame request received", "");
