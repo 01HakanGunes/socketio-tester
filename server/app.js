@@ -24,6 +24,21 @@ app.get("/api/getMessages", (_req, res) => {
   });
 });
 
+app.get("/api/getLatestMessage", (_req, res) => {
+  if (messageQueue.length === 0) {
+    return res.status(404).json({ error: "No messages available" });
+  }
+
+  // Pop the latest message (last item in array - LIFO behavior)
+  const latestMessage = messageQueue.pop();
+
+  res.json({
+    success: true,
+    message: latestMessage,
+    remainingCount: messageQueue.length,
+  });
+});
+
 app.post("/api/sendMessage", (req, res) => {
   const { message } = req.body;
 
