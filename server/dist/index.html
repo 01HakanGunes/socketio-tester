@@ -12,29 +12,10 @@
                 <h1>Security Gate System Tester</h1>
                 <div class="connection-status">
                     <span id="connection-status">Disconnected</span>
-                    <div id="system-status"></div>
                 </div>
             </header>
 
             <div class="main-content">
-                <!-- Session Management -->
-                <section class="panel">
-                    <h2>Session Management</h2>
-                    <div class="session-info">
-                        <span>Current Session ID: </span>
-                        <span id="current-session-id">None</span>
-                    </div>
-                    <div class="controls">
-                        <button id="start-session-btn">Start Session</button>
-                        <button id="end-session-btn" disabled>
-                            End Session
-                        </button>
-                        <button id="get-profile-btn" disabled>
-                            Get Profile
-                        </button>
-                    </div>
-                </section>
-
                 <!-- Chat Interface -->
                 <section class="panel">
                     <h2>Chat Interface</h2>
@@ -45,9 +26,8 @@
                             type="text"
                             placeholder="Enter message..."
                             autocomplete="off"
-                            disabled
                         />
-                        <button type="submit" disabled>Send Message</button>
+                        <button type="submit">Send Message</button>
                     </form>
                 </section>
 
@@ -55,27 +35,9 @@
                 <section class="panel">
                     <h2>Image Upload</h2>
                     <div class="image-upload">
-                        <input
-                            type="file"
-                            id="image-input"
-                            accept="image/*"
-                            disabled
-                        />
-                        <button id="upload-btn" disabled>Upload Image</button>
+                        <input type="file" id="image-input" accept="image/*" />
+                        <button id="upload-btn">Upload Image</button>
                         <div id="upload-status"></div>
-                    </div>
-                </section>
-
-                <!-- Session Subscription -->
-                <section class="panel">
-                    <h2>Session Subscription</h2>
-                    <div class="controls">
-                        <button id="join-updates-btn" disabled>
-                            Join Session Updates
-                        </button>
-                        <button id="leave-updates-btn" disabled>
-                            Leave Session Updates
-                        </button>
                     </div>
                 </section>
 
@@ -85,14 +47,6 @@
                     <div class="controls">
                         <button id="health-check-btn">Health Check</button>
                         <button id="threat-logs-btn">Get Threat Logs</button>
-                    </div>
-                </section>
-
-                <!-- Profile Display -->
-                <section class="panel">
-                    <h2>Visitor Profile</h2>
-                    <div id="profile-display" class="profile-display">
-                        <p>No profile data available</p>
                     </div>
                 </section>
 
