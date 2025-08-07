@@ -16,67 +16,76 @@
             </header>
 
             <div class="main-content">
-                <!-- Chat Interface -->
-                <section class="panel">
-                    <h2>Chat Interface</h2>
+                <!-- Main Chat Interface -->
+                <main class="chat-panel">
+                    <div class="chat-header">
+                        <h2>Security Gate Chat</h2>
+                    </div>
                     <div id="chat-messages" class="chat-messages"></div>
                     <form id="chat-form" class="chat-form">
                         <input
                             id="chat-input"
                             type="text"
-                            placeholder="Enter message..."
+                            placeholder="Type your message..."
                             autocomplete="off"
                         />
-                        <button type="submit">Send Message</button>
+                        <button type="submit">Send</button>
                     </form>
-                </section>
+                </main>
 
-                <!-- Camera System -->
-                <section class="panel">
-                    <h2>Camera System</h2>
-                    <div class="camera-controls">
-                        <button id="init-camera-btn">Initialize Camera</button>
-                        <div id="camera-status">Camera not initialized</div>
-                    </div>
-                    <video
-                        id="camera-video"
-                        style="display: none"
-                        autoplay
-                        muted
-                    ></video>
-                    <canvas id="camera-canvas" style="display: none"></canvas>
-                </section>
+                <!-- Side Panel with Controls -->
+                <aside class="side-panel">
+                    <!-- Camera System -->
+                    <section class="panel">
+                        <h2>Camera System</h2>
+                        <div class="camera-controls">
+                            <button id="init-camera-btn">
+                                Initialize Camera
+                            </button>
+                            <div id="camera-status">Camera not initialized</div>
+                        </div>
+                        <video
+                            id="camera-video"
+                            style="display: none"
+                            autoplay
+                            muted
+                        ></video>
+                        <canvas
+                            id="camera-canvas"
+                            style="display: none"
+                        ></canvas>
+                    </section>
 
-                <!-- System Operations -->
-                <section class="panel">
-                    <h2>System Operations</h2>
-                    <div class="controls">
-                        <button id="health-check-btn">Health Check</button>
-                        <button id="logs-btn">Get Logs</button>
-                    </div>
-                </section>
-
-                <!-- Logs and Events -->
-                <section class="panel full-width">
-                    <h2>Event Logs</h2>
-                    <div class="log-controls">
-                        <button id="clear-logs-btn">Clear Logs</button>
-                        <label>
-                            <input type="checkbox" id="auto-scroll" checked />
-                            Auto-scroll
-                        </label>
-                    </div>
-                    <div id="event-logs" class="event-logs"></div>
-                </section>
-
-                <!-- Logs -->
-                <section class="panel full-width">
-                    <h2>Logs</h2>
-                    <div id="logs" class="logs">
-                        <p>No logs available</p>
-                    </div>
-                </section>
+                    <!-- System Operations -->
+                    <section class="panel">
+                        <h2>System Operations</h2>
+                        <div class="controls">
+                            <button id="health-check-btn">Health Check</button>
+                            <button id="logs-btn">Get Logs</button>
+                        </div>
+                    </section>
+                </aside>
             </div>
+
+            <!-- Full Width Log Sections -->
+            <section class="panel full-width">
+                <h2>Event Logs</h2>
+                <div class="log-controls">
+                    <button id="clear-logs-btn">Clear Logs</button>
+                    <label>
+                        <input type="checkbox" id="auto-scroll" checked />
+                        Auto-scroll
+                    </label>
+                </div>
+                <div id="event-logs" class="event-logs"></div>
+            </section>
+
+            <section class="panel full-width">
+                <h2>System Logs</h2>
+                <div id="logs" class="logs">
+                    <p>No logs available</p>
+                </div>
+            </section>
         </div>
 
         <script src="socket.io.min.js"></script>
