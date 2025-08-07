@@ -10,6 +10,10 @@ const io = new Server(httpServer, {});
 let messageQueue = [];
 let responseString = "";
 
+// Initialize frame queue with limit of 10
+let frameQueue = [];
+const FRAME_QUEUE_LIMIT = 10;
+
 // Add middleware for JSON parsing
 app.use(express.json());
 
@@ -58,6 +62,22 @@ app.post("/api/sendMessage", (req, res) => {
   });
 });
 
+// Get latest frame endpoint
+app.get("/api/getLatestFrame", (_req, res) => {
+  if (frameQueue.length === 0) {
+    return res.status(404).json({ error: "No frames available" });
+  }
+
+  // Pop the latest frame (last item in array - LIFO behavior)
+  const latestFrame = frameQueue.pop();
+
+  res.json({
+    success: true,
+    frame: latestFrame,
+    remainingCount: frameQueue.length,
+  });
+});
+
 // Socket.IO server code
 io.on("connection", (socket) => {
   console.log("Client connected:", socket.id);
@@ -80,6 +100,19 @@ io.on("connection", (socket) => {
       timestamp: data.timestamp,
       imageSize: data.image ? data.image.length : 0,
     });
+
+    // Store frame in queue
+    frameQueue.push({
+      id: Date.now(),
+      image: data.image,
+      timestamp: data.timestamp,
+      socketId: socket.id,
+    });
+
+    // Keep queue size under limit
+    if (frameQueue.length > FRAME_QUEUE_LIMIT) {
+      frameQueue.shift(); // Remove oldest frame
+    }
   });
 
   socket.on("disconnect", () => {
@@ -87,6 +120,17 @@ io.on("connection", (socket) => {
   });
 });
 
+// Start automatic frame capture timer
+setInterval(() => {
+  if (frameQueue.length < FRAME_QUEUE_LIMIT) {
+    io.emit("frame_request", {
+      requestId: Date.now(),
+      timestamp: new Date().toISOString(),
+    });
+  }
+}, 1000);
+
 httpServer.listen(3000, () => {
   console.log("Server started on http://localhost:3000");
+  console.log("Automatic frame capture started (1 frame/second)");
 });
