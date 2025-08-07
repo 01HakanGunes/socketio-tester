@@ -6,26 +6,62 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {});
 
-// TODO Initialize a queue for messages and a response string value
+// Initialize a queue for messages and a response string value
+let messageQueue = [];
+let responseString = "";
 
-// Add 2 restapi endpoints one to get the queue data and other to send a string as message.
-// Maybe "getMessages", and "sendMessage"
+// Add middleware for JSON parsing
+app.use(express.json());
 
 // Serve static files from dist folder
 app.use(express.static("./dist"));
 
-// Socketio server code
+// REST API endpoints
+app.get("/api/getMessages", (_req, res) => {
+  res.json({
+    messages: messageQueue,
+    responseString: responseString,
+  });
+});
 
+app.post("/api/sendMessage", (req, res) => {
+  const { message } = req.body;
+
+  if (!message) {
+    return res.status(400).json({ error: "Message is required" });
+  }
+
+  responseString = message;
+
+  // Emit to all connected clients
+  io.emit("chat_response", message);
+
+  res.json({
+    success: true,
+    message: "Message sent successfully",
+    sentMessage: message,
+  });
+});
+
+// Socket.IO server code
 io.on("connection", (socket) => {
   console.log("Client connected:", socket.id);
 
   socket.on("chat_message", (message) => {
     console.log("Received message:", message);
+
     // Store messages in a queue
+    messageQueue.push({
+      id: Date.now(),
+      message: message,
+      timestamp: new Date().toISOString(),
+      socketId: socket.id,
+    });
   });
-  // Rest endpoints should be here i guess because the socketio connection established here
-  // send this emit when sendMessage request arrives to http endpoint somehow.
-  // Here add socket.emit("chat_response", agent_message);
+
+  socket.on("disconnect", () => {
+    console.log("Client disconnected:", socket.id);
+  });
 });
 
 httpServer.listen(3000, () => {
