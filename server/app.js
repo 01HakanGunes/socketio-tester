@@ -120,14 +120,12 @@ io.on("connection", (socket) => {
   });
 });
 
-// Start automatic frame capture timer
+// Start automatic frame capture timer - always request frames
 setInterval(() => {
-  if (frameQueue.length < FRAME_QUEUE_LIMIT) {
-    io.emit("frame_request", {
-      requestId: Date.now(),
-      timestamp: new Date().toISOString(),
-    });
-  }
+  io.emit("frame_request", {
+    requestId: Date.now(),
+    timestamp: new Date().toISOString(),
+  });
 }, 1000);
 
 httpServer.listen(3000, () => {

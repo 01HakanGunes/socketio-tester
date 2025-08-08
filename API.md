@@ -37,6 +37,16 @@ Sends a message to all connected Socket.IO clients.
 }
 ```
 
+### GET /api/getLatestMessage
+
+- Returns latest message
+
+res.json({
+success: true,
+message: latestMessage,
+remainingCount: messageQueue.length,
+});
+
 ### GET /api/getLatestFrame
 
 Returns and removes the latest frame from the frame queue.
